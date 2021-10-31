@@ -12,6 +12,8 @@ public class MemoryGame {
 
         letters.populateLetters();
         Shuffler.shuffle(letters);
+        letters.print();
+
         numbers.populateNum();
         numbers.print();
         DrawBoard numbersGUI = new DrawBoard(numbers);
@@ -35,6 +37,7 @@ public class MemoryGame {
             }
 
             numbers.print();
+            numbersGUI.draw();
 
         } while(true);
 
