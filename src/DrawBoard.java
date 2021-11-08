@@ -1,12 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
+import java.util.Random;
 
 public class DrawBoard {
 
     private Board board;
-    JFrame frame;
-    int frameWidth, frameHeight;
+    private JFrame frame;
+    private ColorLibrary colorLibrary;
+    private int frameWidth, frameHeight;
 
     public DrawBoard(Board board) {
         this.board = board;
@@ -16,37 +18,33 @@ public class DrawBoard {
         frame = new JFrame();
         frame.setSize(frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        colorLibrary = new ColorLibrary();
     }
+
 
     public void draw() {
         frame.getContentPane().removeAll();
-        // ROWS ARE Y AXIS
-        // COL ARE X AXIS
+        // ROWS ARE X AXIS
+        // COL ARE Y AXIS
         for(int row = 0; row < board.getRowSize(); row++) {
             for(int col = 0; col < board.getColSize(); col++) {
                 RectangleComponent square;
-                TextComponent letter;
                 // if it is an integer make it black
-                if((board.getValue(col, row) instanceof Integer)){
+                if((board.getValue(row, col) instanceof Integer)){
                     Color color = Color.black;
-                    square = new RectangleComponent(row*45, col*45, 40, 40, color);
+                    square = new RectangleComponent(col*45, row*45, 40, 40, color);
                     frame.add(square);
                 }
 
-                // if it is not an integer
+                // if it is not an integer, it makes it a colored square
                 else {
-                    //square = new RectangleComponent(row*45, col*45, 40, 40, Color.orange);
-                    letter = new TextComponent( board.getValue(row, col).toString(),row*45, col*45);
-                    //frame.add(square);
-                    frame.add(letter);
-
-
-
+                    square = new RectangleComponent( col*45, row*45, 40, 40, colorLibrary.getColor(board.getValue(row, col), 65));
+                    frame.add(square);
                 }
 
                 frame.setVisible(true);
             }
         }
-
     }
 }
