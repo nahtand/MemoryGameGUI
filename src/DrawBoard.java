@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-
+//TODO draw answer key
 
 public class DrawBoard {
 
@@ -32,6 +32,18 @@ public class DrawBoard {
         pressedSquares = new ArrayList<>();
         pressedCoord = new ArrayList<>();
         pressedValues = new ArrayList<>();
+    }
+
+    public void drawAnswerKey() {
+        for(int row = 0; row < board.getRowSize(); row++) {
+            for(int col = 0; col < board.getColSize(); col++) {
+                RectangleComponent square;
+                square = new RectangleComponent( col, row, 45, 40, 40, answerKey, colorLibrary.getColor(board.getValue(row, col), 65));
+                frame.add(square);
+            }
+
+        }
+        frame.setVisible(true);
     }
 
 

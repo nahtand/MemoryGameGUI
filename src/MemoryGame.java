@@ -17,6 +17,13 @@ public class MemoryGame {
         numbers.populateNum();
         numbers.print();
         DrawBoard numbersGUI = new DrawBoard(numbers, letters);
+        //numbersGUI.drawAnswerKey();
+        //try{
+        //    Thread.sleep(2000);
+        //}
+        //catch(InterruptedException e) {
+        //    Thread.currentThread().interrupt();
+        //}
         numbersGUI.draw();
 
     }

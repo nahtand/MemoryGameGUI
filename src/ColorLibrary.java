@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.util.ArrayList;
 
+//TODO try to make colors not be so similar and dark asf
+
 // creates a library of 26 colors to be used with the 26 letters of the alphabet
 public class ColorLibrary {
     private ArrayList<Color> colorList;
